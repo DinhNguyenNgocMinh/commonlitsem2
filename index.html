@@ -7,239 +7,126 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f0f9ff;
-            --primary-accent: #3b82f6;
-            --secondary-accent: #10b981;
-            --text-dark: #1e293b;
+            --bg-color: #f8fafc;
+            --primary: #4f46e5;
+            --secondary: #0ea5e9;
+            --accent: #f59e0b;
+            --text-main: #1e293b;
             --card-bg: #ffffff;
-            --nav-bg: rgba(255, 255, 255, 0.9);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
 
         body {
             font-family: 'Lexend', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-dark);
-            line-height: 1.6;
+            color: var(--text-main);
+            line-height: 1.7;
         }
 
         /* --- Navigation --- */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--nav-bg);
+            top: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #e2e8f0;
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-accent);
-        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: bold; color: var(--primary); }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+        .nav-links { display: flex; list-style: none; gap: 2.5rem; }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
 
-        .nav-links a:hover {
-            color: var(--primary-accent);
-        }
-
-        /* Dropdown Logic */
-        .dropdown {
-            position: relative;
-        }
-
+        .dropdown { position: relative; }
         .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 220px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            padding: 0.5rem 0;
+            display: none; position: absolute; top: 100%; left: 0;
+            background: white; min-width: 250px; border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 0.5rem 0;
         }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-content a {
-            padding: 0.7rem 1rem;
-            display: block;
-            font-size: 0.9rem;
-        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content a { padding: 0.8rem 1.5rem; display: block; font-size: 0.9rem; border-bottom: 1px solid #f1f5f9; }
 
         /* --- Hero Section --- */
         header {
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
-            padding: 0 1rem;
+            height: 50vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f0f9ff 100%);
+            text-align: center; padding-top: 80px;
         }
+        header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary); }
 
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-accent);
-        }
-
-        /* --- Main Content --- */
-        .container {
-            max-width: 900px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
+        /* --- Content Layout --- */
+        .container { max-width: 1000px; margin: 4rem auto; padding: 0 2rem; }
 
         .book-section {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-bottom: 5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border-top: 8px solid var(--primary-accent);
-            transition: transform 0.3s;
+            border-radius: 24px;
+            padding: 4rem;
+            margin-bottom: 6rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
 
-        .book-section:nth-child(even) {
-            border-top-color: var(--secondary-accent);
+        .title-block { border-left: 6px solid var(--primary); padding-left: 1.5rem; margin-bottom: 2.5rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; line-height: 1.2; }
+        .meta { color: #64748b; font-weight: 500; font-size: 1.1rem; }
+
+        .image-gallery {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0;
+        }
+        .image-gallery img {
+            width: 100%; height: 250px; object-fit: cover; border-radius: 15px;
+            border: 1px solid #e2e8f0; background: #f1f5f9;
         }
 
-        .book-section:hover {
-            transform: translateY(-5px);
+        .content-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+
+        .section-box { margin-bottom: 1rem; }
+        h3 { 
+            font-size: 1.2rem; color: var(--primary); text-transform: uppercase; 
+            letter-spacing: 1px; margin-bottom: 1rem; border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.3rem; display: inline-block;
         }
 
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+        .evidence-quote {
+            background: #f8fafc; border-left: 4px solid var(--accent);
+            padding: 1.5rem; font-style: italic; margin: 1rem 0; font-size: 0.95rem;
         }
 
-        .author {
-            font-style: italic;
-            color: #64748b;
-            margin-bottom: 1.5rem;
-            display: block;
+        .skills-lessons {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+            background: #eef2ff; padding: 2rem; border-radius: 15px; margin-top: 2rem;
         }
 
-        h3 {
-            margin: 1.5rem 0 0.5rem;
-            color: var(--primary-accent);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* --- Footer --- */
+        footer { background: #0f172a; color: white; padding: 5rem 5%; text-align: center; }
+        .about-me { max-width: 700px; margin: 0 auto; }
 
-        .summary {
-            text-align: justify;
-            margin-bottom: 1.5rem;
-        }
-
-        .grid-info {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        ul {
-            padding-left: 1.2rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        .tag-container {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-        }
-
-        .tag {
-            background: #eff6ff;
-            color: var(--primary-accent);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        /* --- Critical Review Section --- */
-        .review-guide {
-            background: #f8fafc;
-            border: 2px dashed #cbd5e1;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 3rem;
-        }
-
-        /* --- About Me --- */
-        footer {
-            background: #1e293b;
-            color: white;
-            padding: 4rem 5%;
-            text-align: center;
-        }
-
-        .about-box {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- Responsive --- */
         @media (max-width: 768px) {
-            .grid-info { grid-template-columns: 1fr; }
-            header h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
+            .image-gallery, .skills-lessons { grid-template-columns: 1fr; }
+            h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">ScholarlyLog.</div>
+        <div class="logo">ReadingLog.</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li class="dropdown">
-                <a href="#">Books ▾</a>
+                <a href="#">Reading Log ▾</a>
                 <div class="dropdown-content">
                     <a href="#book1">1. Mary Had a Little Turkey</a>
                     <a href="#book2">2. Traveling West</a>
-                    <a href="#book3">3. Food System Issues</a>
-                    <a href="#book4">4. Teen Sports Injuries</a>
-                    <a href="#book5">5. Lost in a Corn Maze</a>
+                    <a href="#book3">3. Global Food System</a>
+                    <a href="#book4">4. Adolescent Neuro-Athletics</a>
+                    <a href="#book5">5. Corn Maze Mechanics</a>
                 </div>
             </li>
             <li><a href="#about">About Me</a></li>
@@ -248,205 +135,271 @@
 
     <header id="home">
         <h1>Curated Reading Portfolio</h1>
-        <p>A comprehensive analysis of literary and informational texts.</p>
+        <p>A Scholarly Journey through Cultural, Historical, and Scientific Texts</p>
     </header>
 
     <div class="container">
         
         <section id="book1" class="book-section">
-            <h2>Mary Had a Little Turkey</h2>
-            <span class="author">By Greta Burroughs (2022)</span>
-            
-            <h3>Abstract Summary</h3>
-            <p class="summary">
-                This historical exposé delineates the genesis of Thanksgiving as a national American holiday, primarily attributing its existence to the persistent advocacy of Sarah Josepha Hale. Burroughs elucidates how Hale, an influential author, spent thirty-six years campaigning for a unified date of gratitude to foster national unity during the Civil War. The text further explores the global manifestations of harvest festivals, highlighting cultural variations such as Germany’s Erntedankfest and Japan’s Kinrō Kansha no Hi. By examining the transition from disparate local observations to a formalized federal holiday sanctioned by Abraham Lincoln and later Franklin D. Roosevelt, the narrative underscores the power of individual tenacity in shaping cultural traditions. Ultimately, it serves as a testament to the universal human inclination to express gratitude for communal abundance.
-            </p>
+            <div class="title-block">
+                <h2>Mary Had a Little Turkey</h2>
+                <p class="meta">Author: Greta Burroughs | Year: 2022</p>
+            </div>
 
-            <div class="grid-info">
+            <div class="image-gallery">
+                <img src="assets/maryturkey_anh1.jpg" alt="Thanksgiving History">
+                <img src="assets/maryturkey_anh2.jpg" alt="Sarah Josepha Hale">
+            </div>
+
+            <div class="content-grid">
+                <div class="section-box">
+                    <h3>I. Pre-reading Reflection</h3>
+                    <p>Before engaging with the text, the title juxtaposes a well-known nursery rhyme with a festive icon, suggesting an investigation into the non-traditional origins of a standardized cultural holiday. It prompts an inquiry into how individual advocacy shapes national identity.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>II. Academic Summary</h3>
+                    <p>This text elucidates the historical trajectory of Thanksgiving, crediting its status as a federal holiday to the persistent lobbying of Sarah Josepha Hale. Spanning 36 years of advocacy, Hale envisioned the holiday as a catalyst for national reconciliation during the Civil War. The narrative expands to include global harvest traditions, such as the Mid-Autumn Festival and Erntedankfest, framing gratitude as a universal human phenomenon.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>III. In-text Evidence</h3>
+                    <div class="evidence-quote">
+                        "Hale envisioned a holiday set on a specific date that would promote a sense of community and shared experience. She hoped it would help ease the tensions caused by the ongoing Civil War."
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>IV. Post-reading & Personal Connection</h3>
+                    <p>Post-analysis reveals that cultural norms are often the result of deliberate social engineering rather than organic evolution. Personally, I resonate with Hale's tenacity; it reminds me that professional writing can serve as a potent tool for systemic change within one's community.</p>
+                </div>
+            </div>
+
+            <div class="skills-lessons">
                 <div>
-                    <h3>Key Thematic Elements</h3>
-                    <ul>
-                        <li>Historical evolution of Thanksgiving</li>
-                        <li>The impact of female advocacy (Sarah J. Hale)</li>
-                        <li>Global variations of harvest celebrations</li>
-                    </ul>
+                    <strong>Core Skills:</strong>
+                    <ul><li>Historical Synthesis</li><li>Advocacy Analysis</li></ul>
                 </div>
                 <div>
-                    <h3>Critical Competencies</h3>
-                    <div class="tag-container">
-                        <span class="tag">Historical Analysis</span>
-                        <span class="tag">Cross-Cultural Literacy</span>
-                        <span class="tag">Persuasive Rhetoric</span>
-                    </div>
-                    <h3>Scholarly Insights</h3>
-                    <ul>
-                        <li>Tenacity is essential for systemic change.</li>
-                        <li>Traditions serve as tools for social cohesion.</li>
-                    </ul>
+                    <strong>Scholarly Lessons:</strong>
+                    <ul><li>Tenacity drives policy</li><li>Culture as a unifying force</li></ul>
                 </div>
             </div>
         </section>
 
         <section id="book2" class="book-section">
-            <h2>Traveling West</h2>
-            <span class="author">By Barbara Radner (2005)</span>
-            
-            <h3>Abstract Summary</h3>
-            <p class="summary">
-                Radner investigates the 19th-century phenomenon of American westward expansion, driven by the ideological framework of "Manifest Destiny." The narrative meticulously details the logistical hardships faced by pioneers who navigated treacherous terrains in wagon trains. Emphasis is placed on the transition from individual survival to communal collaboration, as families pooled resources to overcome environmental obstacles. The text concludes by contrasting the arduous year-long treks of the mid-1800s with the technological revolution of the railroad, which transformed transcontinental travel into a matter of days. This shift signifies the rapid industrialization of the United States and the romanticization of the pioneer spirit in contemporary national identity.
-            </p>
+            <div class="title-block">
+                <h2>Traveling West</h2>
+                <p class="meta">Author: Barbara Radner | Year: 2005</p>
+            </div>
 
-            <div class="grid-info">
+            <div class="image-gallery">
+                <img src="assets/travelingwest_anh1.jpg" alt="Pioneer Wagons">
+                <img src="assets/travelingwest_anh2.jpg" alt="The Railroad Revolution">
+            </div>
+
+            <div class="content-grid">
+                <div class="section-box">
+                    <h3>I. Pre-reading Reflection</h3>
+                    <p>The concept of "expansion" often ignores the logistical hardships of the era. This reading serves to bridge the gap between the ideological "Manifest Destiny" and the grueling reality of 19th-century transcontinental migration.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>II. Academic Summary</h3>
+                    <p>Radner documents the arduous journey of pioneers moving from the Eastern United States to the West during the 1840s. The text highlights the critical importance of "wagon trains"—collaborative groups that mitigated environmental and logistical risks. The narrative eventually transitions to the industrial revolution, where the introduction of railroads compressed months of perilous travel into a few days of comfortable transit.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>III. In-text Evidence</h3>
+                    <div class="evidence-quote">
+                        "When the wagons encountered a problem, such as a storm that caused wagons to stick in muddy holes, they would solve it together... they were collaborators in community."
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>IV. Post-reading & Personal Connection</h3>
+                    <p>The transition from "wagon" to "metropolis" illustrates the rapid acceleration of human progress through infrastructure. This reminds me of modern digital connectivity—how we have moved from isolated efforts to global collaboration in a similarly short timeframe.</p>
+                </div>
+            </div>
+
+            <div class="skills-lessons">
                 <div>
-                    <h3>Key Thematic Elements</h3>
-                    <ul>
-                        <li>Logistics of 19th-century migration</li>
-                        <li>Manifest Destiny and westward expansion</li>
-                        <li>Impact of the Transcontinental Railroad</li>
-                    </ul>
+                    <strong>Core Skills:</strong>
+                    <ul><li>Logistical Analysis</li><li>Sociological Observation</li></ul>
                 </div>
                 <div>
-                    <h3>Critical Competencies</h3>
-                    <div class="tag-container">
-                        <span class="tag">Sociological Observation</span>
-                        <span class="tag">Historical Contextualization</span>
-                        <span class="tag">Technological Impact Study</span>
-                    </div>
-                    <h3>Scholarly Insights</h3>
-                    <ul>
-                        <li>Collaboration mitigates environmental risks.</li>
-                        <li>Infrastructure dictates the pace of societal growth.</li>
-                    </ul>
+                    <strong>Scholarly Lessons:</strong>
+                    <ul><li>Collaboration ensures survival</li><li>Infrastructure dictates growth</li></ul>
                 </div>
             </div>
         </section>
 
         <section id="book3" class="book-section">
-            <h2>What’s Wrong with Our Food System</h2>
-            <span class="author">By Birke Baehr (2010)</span>
-            
-            <h3>Abstract Summary</h3>
-            <p class="summary">
-                Birke Baehr, an eleven-year-old activist, presents a compelling critique of the industrialized food complex. The discourse highlights the deceptive nature of corporate marketing aimed at youth and contrasts the idealized "storybook farm" with the reality of Genetically Modified Organisms (GMOs) and Confined Animal Feeding Operations (CAFOs). Baehr articulates the ecological and physiological risks associated with chemical pesticides and synthetic fertilizers, advocating for a localized, organic agricultural model. By emphasizing the economic trade-off between supporting local farmers and incurring future medical costs, the speech empowers consumers to make ethical choices. It serves as a clarion call for transparency, sustainability, and individual agency within the global food supply chain.
-            </p>
+            <div class="title-block">
+                <h2>What's Wrong with Our Food System</h2>
+                <p class="meta">Speaker: Birke Baehr | Year: 2010</p>
+            </div>
 
-            <div class="grid-info">
+            <div class="image-gallery">
+                <img src="assets/foodsystem_anh1.jpg" alt="Industrial Farming">
+                <img src="assets/foodsystem_anh2.jpg" alt="Organic Agriculture">
+            </div>
+
+            <div class="content-grid">
+                <div class="section-box">
+                    <h3>I. Pre-reading Reflection</h3>
+                    <p>As consumers, we are often distanced from the origins of our sustenance. This speech promises to dismantle the "happy farm" façade perpetuated by corporate marketing and replace it with a critical view of industrial food production.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>II. Academic Summary</h3>
+                    <p>Birke Baehr delivers a poignant critique of the global food supply chain, specifically targeting genetically engineered organisms (GMOs), chemical pesticides, and CAFOs. Baehr advocates for a paradigm shift toward localized organic farming. He argues that the perceived higher cost of organic food is an investment that offsets future healthcare expenditures, urging a "know your farmer, know your food" philosophy.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>III. In-text Evidence</h3>
+                    <div class="evidence-quote">
+                        "It seems to me like corporations are always trying to get kids, like me, to get their parents to buy stuff that really isn’t good for us or the planet."
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>IV. Post-reading & Personal Connection</h3>
+                    <p>This text reinforces the necessity of ethical consumerism. My personal takeaway is the importance of "impact over ambition"—choosing a path, like organic farming, that provides a tangible benefit to the biosphere over conventional success markers.</p>
+                </div>
+            </div>
+
+            <div class="skills-lessons">
                 <div>
-                    <h3>Key Thematic Elements</h3>
-                    <ul>
-                        <li>Critique of industrialized agriculture</li>
-                        <li>Health implications of GMOs and pesticides</li>
-                        <li>Advocacy for localism and organic farming</li>
-                    </ul>
+                    <strong>Core Skills:</strong>
+                    <ul><li>Critical Discourse Analysis</li><li>Ethical Reasoning</li></ul>
                 </div>
                 <div>
-                    <h3>Critical Competencies</h3>
-                    <div class="tag-container">
-                        <span class="tag">Ethical Consumerism</span>
-                        <span class="tag">Environmental Science</span>
-                        <span class="tag">Public Speaking</span>
-                    </div>
-                    <h3>Scholarly Insights</h3>
-                    <ul>
-                        <li>Knowledge is the precursor to healthy habits.</li>
-                        <li>Local sourcing enhances ecological resilience.</li>
-                    </ul>
+                    <strong>Scholarly Lessons:</strong>
+                    <ul><li>Transparency is vital</li><li>Consumer agency matters</li></ul>
                 </div>
             </div>
         </section>
 
         <section id="book4" class="book-section">
-            <h2>Teen Brain Takes Biggest Sports Hits</h2>
-            <span class="author">By Katherine Harmon (2012)</span>
-            
-            <h3>Abstract Summary</h3>
-            <p class="summary">
-                Harmon examines the heightened vulnerability of the adolescent brain to sports-related concussions, citing recent neurological research. The study emphasizes that the frontal cortex—responsible for executive functions—is in a critical state of development during the teenage years, making head injuries particularly detrimental. Through an analysis of 96 male athletes, the research demonstrates that concussed adolescents exhibit persistent cognitive impairments, specifically in working memory, even after physical symptoms subside. The text underscores the discrepancy between perceived recovery and actual neurological healing. These findings advocate for stricter safety protocols in contact sports to protect the long-term cognitive integrity of student-athletes during a pivotal stage of brain maturation.
-            </p>
+            <div class="title-block">
+                <h2>Teen Brain Takes Biggest Sports Hits</h2>
+                <p class="meta">Author: Katherine Harmon | Year: 2012</p>
+            </div>
 
-            <div class="grid-info">
+            <div class="image-gallery">
+                <img src="assets/teenbrain_anh1.jpg" alt="Brain Development">
+                <img src="assets/teenbrain_anh2.jpg" alt="Sports Safety">
+            </div>
+
+            <div class="content-grid">
+                <div class="section-box">
+                    <h3>I. Pre-reading Reflection</h3>
+                    <p>Sports are central to student life, yet the physiological risks are often understated. I approach this text seeking to understand the specific neurobiological vulnerabilities of the adolescent brain compared to adults.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>II. Academic Summary</h3>
+                    <p>Katherine Harmon investigates the impact of concussions on the developing teenage brain. Research indicates that because the frontal cortex (responsible for executive functions) is still maturing, adolescents are uniquely susceptible to long-term cognitive impairment. The study reveals that even when athletes report feeling "fine," reduced working memory and cognitive deficits persist months after the initial trauma.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>III. In-text Evidence</h3>
+                    <div class="evidence-quote">
+                        "The adolescents had the most cognitive impairment, even if months had passed since their injury, and they reported feeling just fine."
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>IV. Post-reading & Personal Connection</h3>
+                    <p>The discrepancy between physical feeling and neurological health is alarming. As a student, this emphasizes that academic performance is deeply linked to physical safety; protecting one's "executive functions" is a prerequisite for long-term intellectual success.</p>
+                </div>
+            </div>
+
+            <div class="skills-lessons">
                 <div>
-                    <h3>Key Thematic Elements</h3>
-                    <ul>
-                        <li>Neurological vulnerability of adolescents</li>
-                        <li>Long-term effects of concussions</li>
-                        <li>The role of the frontal cortex in executive function</li>
-                    </ul>
+                    <strong>Core Skills:</strong>
+                    <ul><li>Biological Data Interpretation</li><li>Risk Assessment</li></ul>
                 </div>
                 <div>
-                    <h3>Critical Competencies</h3>
-                    <div class="tag-container">
-                        <span class="tag">Neurobiological Analysis</span>
-                        <span class="tag">Data Interpretation</span>
-                        <span class="tag">Medical Literacy</span>
-                    </div>
-                    <h3>Scholarly Insights</h3>
-                    <ul>
-                        <li>Physical recovery does not equate to cognitive health.</li>
-                        <li>Precautionary measures are vital for brain safety.</li>
-                    </ul>
+                    <strong>Scholarly Lessons:</strong>
+                    <ul><li>Brain plasticity has limits</li><li>Data outweighs subjective feeling</li></ul>
                 </div>
             </div>
         </section>
 
         <section id="book5" class="book-section">
-            <h2>Lost in a Corn Maze</h2>
-            <span class="author">By Laurie Wallmark (2011)</span>
-            
-            <h3>Abstract Summary</h3>
-            <p class="summary">
-                Wallmark provides an insightful overview of the "corn maze" phenomenon, blending historical context with modern agricultural engineering. The text traces the evolution of mazes from ancient Greek labyrinths and medieval European "puzzle hedges" to the high-tech designs facilitated by Global Positioning Systems (GPS) today. It highlights the economic and recreational significance of corn mazes for modern farmers and explores the various navigational strategies employed by participants, such as the "right-hand rule." Furthermore, the author notes that children aged eight to ten often possess a unique "maze intuition" due to their attention to minute environmental details. This informational text celebrates the intersection of tradition, technology, and cognitive problem-solving in a festive autumnal setting.
-            </p>
+            <div class="title-block">
+                <h2>Lost in a Corn Maze</h2>
+                <p class="meta">Author: Laurie Wallmark | Year: 2011</p>
+            </div>
 
-            <div class="grid-info">
+            <div class="image-gallery">
+                <img src="assets/cornmaze_anh1.jpg" alt="Maze Engineering">
+                <img src="assets/cornmaze_anh2.jpg" alt="Spatial Navigation">
+            </div>
+
+            <div class="content-grid">
+                <div class="section-box">
+                    <h3>I. Pre-reading Reflection</h3>
+                    <p>What appears to be a simple autumnal amusement is actually a complex feat of spatial engineering. This text likely explores the intersection of ancient labyrinth traditions and modern GPS technology.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>II. Academic Summary</h3>
+                    <p>Wallmark explores the cultural and technical aspects of corn mazes. Tracing the history from Greek mythology to the first modern corn maze in 1993, the text describes how farmers use GPS and digital design to create intricate agrarian puzzles. It further analyzes the cognitive strategies of "maze-runners," noting that children often outperform adults due to their attention to environmental minutiae (maze intuition).</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>III. In-text Evidence</h3>
+                    <div class="evidence-quote">
+                        "It’s noticing these little details that give the kids that ‘maze intuition.’... They remember a gum wrapper on the ground, a footprint, or a bent cornstalk."
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <h3>IV. Post-reading & Personal Connection</h3>
+                    <p>The "right-hand rule" and "maze intuition" are metaphors for problem-solving in life. This reading encourages me to maintain a detail-oriented perspective—often, the smallest clues lead to the most effective solutions when one feels "lost" in a project.</p>
+                </div>
+            </div>
+
+            <div class="skills-lessons">
                 <div>
-                    <h3>Key Thematic Elements</h3>
-                    <ul>
-                        <li>Historical lineage of labyrinths and mazes</li>
-                        <li>Integration of GPS technology in agriculture</li>
-                        <li>Cognitive strategies for navigation</li>
-                    </ul>
+                    <strong>Core Skills:</strong>
+                    <ul><li>Spatial Analysis</li><li>Technological Contextualization</li></ul>
                 </div>
                 <div>
-                    <h3>Critical Competencies</h3>
-                    <div class="tag-container">
-                        <span class="tag">Spatial Reasoning</span>
-                        <span class="tag">Technological Integration</span>
-                        <span class="tag">Cultural History</span>
-                    </div>
-                    <h3>Scholarly Insights</h3>
-                    <ul>
-                        <li>Detail-oriented observation aids navigation.</li>
-                        <li>Tradition can be revitalized through technology.</li>
-                    </ul>
+                    <strong>Scholarly Lessons:</strong>
+                    <ul><li>Details provide clarity</li><li>Ancient concepts evolve</li></ul>
                 </div>
             </div>
         </section>
 
-        <div class="review-guide">
-            <h3>Methodology for Academic Book Reviews</h3>
-            <p>When conducting a formal review, one should adhere to the following structural hierarchy to ensure scholarly rigor:</p>
+        <div style="background: #fff; padding: 3rem; border-radius: 20px; border: 2px dashed #cbd5e1;">
+            <h3 style="color: var(--primary);">Academic Book Review Methodology</h3>
+            <p>To produce a high-caliber critical review, one must maintain the following sequence:</p>
             <ol style="margin-left: 2rem; margin-top: 1rem;">
-                <li><strong>Bibliographic Citation:</strong> Precise identification of the work.</li>
-                <li><strong>Thesis Identification:</strong> Articulating the author’s primary argument.</li>
-                <li><strong>Evidence Evaluation:</strong> Assessing the validity of the data or narrative used.</li>
-                <li><strong>Contribution to the Field:</strong> How the text fits into broader academic discourse.</li>
-                <li><strong>Critical Reflection:</strong> Personal assessment of the text’s strengths and weaknesses.</li>
+                <li><strong>Identification:</strong> Define the author's primary thesis and objective.</li>
+                <li><strong>Contextualization:</strong> Situate the work within its historical or scientific field.</li>
+                <li><strong>Critical Analysis:</strong> Evaluate the strength of the evidence (in-text evidence).</li>
+                <li><strong>Synthesis:</strong> Connect the findings to personal experience or global issues.</li>
             </ol>
         </div>
 
     </div>
 
     <footer id="about">
-        <div class="about-box">
-            <h2>About me</h2>
+        <div class="about-me">
+            <h2>About the Scholar</h2>
             <p>I am Dinh Nguyen Ngoc Minh, a dedicated student from class 12E6. To me, reading is more than a habit; it is a vital mental exercise that sharpens my analytical thinking. Through these five reading entries, I have gained profound insights and a broader perspective on the world. I am committed to continuous learning as I prepare for my future university journey and beyond.</p>
-            <p style="margin-top: 2rem; font-size: 0.8rem; opacity: 0.7;">© 2026 Academic Reading Log Project. Developed for school work.</p>
+            <div style="margin-top: 3rem; opacity: 0.6; font-size: 0.8rem;">
+                © 2026 Academic Portfolio Project | Assets stored in /assets/
+            </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for dropdown links and home
+        // Smooth scroll implementation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
